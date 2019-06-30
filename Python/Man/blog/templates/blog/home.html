@@ -1,0 +1,33 @@
+{% extends 'blog/main.html' %}
+{% block main_section %}
+    {% for post in news %}
+    <div class="alert alert-light">
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.text }}</p>
+    <div class="row">
+        <div>
+          {% if post.avtor.profile.img %}
+            <img src="{{ post.avtor.profile.img.url }}" alt="{{ post.avtor }}" class="user_image">
+          {% else %}
+            <img src="/pictures/default.jpg" alt="{{post.avtor }}" class="user_image">  
+            {% endif %}
+        </div>
+           <div class="mt-2">
+            <span class="text-muted">Публикация:{{ post.date|date:"d F Y, Время: h:i:s" }}</span> 
+              <p><b>Автор:</b> <mark>{{ post.avtor }}</mark></p>  
+        </div>
+      </div>            
+    </div>
+    {% endfor %} 
+{% endblock main_section %}
+
+
+{% block aside_news_section %}
+ <h3><b>Какие языки программирования ненавидят больше и почему?</b></h3>
+ <img src="https://itproger.com/img/news/1547377263.jpg" class="img-thumbnail mb-1">
+ <p>Авторитетный веб-ресурс Stack Overflow решил заняться опросом в отношении языков программирования. В этот раз в центре внимания нелюбимые языки.  
+ </p>
+ <a href="https://itproger.com/news/161" target="_blank">
+ <button class="btn btn-warning">Перейти</button>
+ </a>                                                            
+{% endblock aside_news_section%}
